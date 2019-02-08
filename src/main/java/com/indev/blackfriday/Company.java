@@ -1,12 +1,15 @@
 package com.indev.blackfriday;
 
 public class Company {
+
+    private int totalAsset = 0;
+
     public float sells(String capsule) {
         return 0;
     }
 
-    public void stock(int i, String capsule, int i1) {
-
+    public void stock(int quantity, String capsule, int price) {
+        totalAsset += price * quantity;
     }
 
     public Company to(int i) {
@@ -18,7 +21,7 @@ public class Company {
     }
 
     public int totalAssets() {
-        return 20;
+        return totalAsset;
     }
 
     public Company blackFriday() {
