@@ -11,9 +11,13 @@ public class Company {
     List<StockEntry> products = new ArrayList<>();
     private int sellAsset = 0;
 
+    private SalesHistoryProxy salesHistoryProxy = new SalesHistoryProxy();
+
     public float sells(String capsule) {
         int sellPrice = (int) (products.get(0).sell(SELL_PACKAGE) * NORMAL_MARGIN);
         this.sellAsset += sellPrice;
+        salesHistoryProxy.sales(SELL_PACKAGE);
+
         return sellPrice;
     }
 
@@ -39,5 +43,10 @@ public class Company {
 
     public Company blackFriday() {
         return this;
+    }
+
+    public String salesHistory() {
+
+        return salesHistoryProxy.getHistory();
     }
 }
