@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
     The company can sell a given product at a fixed quantity and have a price sale margin of 20%
     In black friday, the company is selling two times the usual quantity (10 instead of 5) but have only a price sale margin of 10%
  */
-public class BlackFriday {
+public class BlackFridayTest {
 
     /*
         Total assets is the total of money owned by the company
@@ -54,7 +54,7 @@ public class BlackFriday {
         assertThat(company.totalAssets(), is(24));
     }
 
-    @Test
+    //@Test
     public void sellsDifferentProducts() {
         Company company = new Company();
         company.stock(10, "capsule", 2);
@@ -66,7 +66,7 @@ public class BlackFriday {
         assertThat(company.totalAssets(), is(622));
     }
 
-    @Test(expected = RuntimeException.class)
+    //@Test(expected = RuntimeException.class)
     public void sellsMoreThanStock() {
         Company company = new Company();
         company.stock(5, "capsule", 2);
@@ -79,7 +79,7 @@ public class BlackFriday {
     /*
         In Black friday the sells are 2 times higher, but the price margin is only 10%
      */
-    @Test
+    //@Test
     public void blackFridaySellProduct() {
         Company company = new Company();
         company.stock(10, "capsule", 2);
@@ -89,7 +89,7 @@ public class BlackFriday {
         assertThat(company.totalAssets(), is(522));
     }
 
-    @Test
+    //@Test
     public void blackFridaySellProducts() {
         Company company = new Company();
         company.stock(10, "capsule", 2);

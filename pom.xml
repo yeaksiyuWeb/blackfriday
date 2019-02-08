@@ -8,14 +8,12 @@
     <artifactId>blackfriday</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <build.plugins.plugin.version></build.plugins.plugin.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -36,6 +34,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
