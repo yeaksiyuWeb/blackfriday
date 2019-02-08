@@ -1,15 +1,24 @@
 package com.indev.blackfriday;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Company {
 
-    private int totalAsset = 0;
+    public static final double NORMAL_MARGIN = 1.2;
+    public static final int SELL_PACKAGE = 5;
+
+    List<StockEntry> products = new ArrayList<>();
+    private int sellAsset = 0;
 
     public float sells(String capsule) {
-        return 0;
+        int sellPrice = (int) (products.get(0).sell(SELL_PACKAGE) * NORMAL_MARGIN);
+        this.sellAsset += sellPrice;
+        return sellPrice;
     }
 
-    public void stock(int quantity, String capsule, int price) {
-        totalAsset += price * quantity;
+    public void stock(int quantity, String id, int price) {
+        products.add(new StockEntry(id, quantity, price));
     }
 
     public Company to(int i) {
@@ -21,7 +30,11 @@ public class Company {
     }
 
     public int totalAssets() {
-        return totalAsset;
+        int stockAsset = 0;
+        for (StockEntry product : products) {
+            stockAsset += product.asset();
+        }
+        return stockAsset + sellAsset;
     }
 
     public Company blackFriday() {

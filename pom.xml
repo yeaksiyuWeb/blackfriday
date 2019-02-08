@@ -7,6 +7,10 @@
     <groupId>com.indev.blackfriday</groupId>
     <artifactId>blackfriday</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <build.plugins.plugin.version></build.plugins.plugin.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -28,6 +32,33 @@
                     </formats>
                     <check/>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
