@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.indev.blackfriday.BlackFridayTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-08-31T23:31:07" hostname="SIYU" time="0.018">
+  <properties/>
+  <testcase name="oneProductInStock" classname="com.indev.blackfriday.BlackFridayTest" time="0.013"/>
+  <testcase name="twoProductsInStock" classname="com.indev.blackfriday.BlackFridayTest" time="0.0"/>
+  <testcase name="sellsProduct" classname="com.indev.blackfriday.BlackFridayTest" time="0.001"/>
+  <testcase name="sellsWithProxy" classname="com.indev.blackfriday.BlackFridayTest" time="0.001"/>
+  <testcase name="sellsProducts" classname="com.indev.blackfriday.BlackFridayTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
