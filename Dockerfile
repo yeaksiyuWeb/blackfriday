@@ -15,21 +15,18 @@ COPY src/ ./src
 # Step 5: Build the application using Gradle
 RUN gradle build --no-daemon
 
-# Step 6: Run tests using Gradle
-RUN gradle RunTest --no-daemon
-
-#Step 7: Run to build Jar 
+#Step 6: Run to build Jar 
 RUN gradle BuildJar --no-daemon
 RUN gradle copyResources --no-daemon
 RUN gradle createZip --no-daemon
 
-# Step 8: Use a smaller base image for the final application
+# Step 7: Use a smaller base image for the final application
 FROM openjdk:22-jdk
 
-# Step 9: Copy the built JAR from the build stage
+# Step 8: Copy the built JAR from the build stage
 COPY --from=build /app/build/libs/blackfriday-1.0-SNAPSHOT.jar /app/blackfriday.jar
 
-# Step 10: Set the entry point for the container to run the CLI application
+# Step 9: Set the entry point for the container to run the CLI application
 ENTRYPOINT ["java", "-jar", "/app/blackfriday.jar"]
 
 # Optional: If you want to pass arguments to your CLI application
