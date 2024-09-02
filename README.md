@@ -11,5 +11,5 @@ This test is about a company that is selling products (here capsules and machine
 
 Project Requirements
 -----
-Java version (used): 22.0.2
-Gradle version (used): 8.8
+- Java version (used): 22.0.2
+- Gradle version (used): 8.8
