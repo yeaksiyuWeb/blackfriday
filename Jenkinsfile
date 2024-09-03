@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy') {
             steps {                
                         bat 'docker build -t blackfriday .'
-                        bat 'docker run -i blackfriday'
+                        bat 'winpty docker run -it blackfriday'
                  }           
         }
     
