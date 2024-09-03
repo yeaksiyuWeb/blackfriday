@@ -5,25 +5,33 @@
  */
 
 plugins {
-    id 'java-library'
+    id 'java'
     // id 'maven-publish'
-}
-
-repositories {
-    mavenCentral()
-    // maven {
-    //     url = uri('https://repo.maven.apache.org/maven2/')
-    // }
-}
-
-dependencies {
-    testImplementation libs.junit.junit
 }
 
 group = 'com.indev.blackfriday'
 version = '1.0-SNAPSHOT'
 description = 'blackfriday'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+task RunTest(type: Test) { 
+    testClassesDirs = sourceSets.test.output.classesDirs
+ 
+    // Optionally configure test options 
+    testLogging { 
+        // Log events for passed, skipped, and failed tests
+        events 'passed', 'skipped', 'failed' 
+    } 
+}
+
 
 // Define a task to build an executable JAR file 
 task BuildJar(type: Jar) { 
@@ -32,9 +40,23 @@ task BuildJar(type: Jar) {
     } 
  
     from sourceSets.main.output  // Include compiled classes in the JAR 
-    archiveBaseName = 'my-application'  // Name of the JAR file 
+    archiveBaseName = 'blackfriday'  // Name of the JAR file 
     destinationDirectory = file('build/libs')
 }
+
+task copyResources(type: Copy) { 
+    from 'src/main/java/com/indev/blackfriday' 
+    into 'build/resources' 
+}
+
+// Task to create a zip archive of the project 
+task createZip(type: Zip) { 
+    from 'build' 
+    archiveFileName = 'blackfriday.zip' 
+    destinationDirectory = file('build/distributions') 
+} 
+
+
 
 // publishing {
 //     publications {
