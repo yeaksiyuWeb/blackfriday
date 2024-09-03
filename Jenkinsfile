@@ -10,14 +10,14 @@ pipeline {
         stage('Build') {
             steps {
 
-                        bat './gradle build'
+                        bat 'gradle build'
                 
             }
         }
         stage('Test') {
             steps {
                 
-                        bat './gradle RunTest'
+                        bat 'gradle RunTest'
                   
             }
         }
