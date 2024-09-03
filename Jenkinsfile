@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {                
-                        bat 'docker build -t blackfriday'
+                        bat 'docker build -t blackfriday .'
                         bat 'docker run -it blackfriday'
                  }           
         }
