@@ -4,26 +4,27 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'cicd', url: 'https://github.com/yeaksiyuWeb/blackfriday.git'
+                git branch: 'development', url: 'https://github.com/yeaksiyuWeb/blackfriday.git'
             }
         }
         stage('Build') {
             steps {
 
-                        powershell './gradlew build'
+                        bat 'gradle build'
                 
             }
         }
         stage('Test') {
             steps {
                 
-                        powershell './gradlew test'
+                        bat 'gradle RunTest'
                   
             }
         }
         stage('Deploy') {
             steps {                
-                        powershell 'java -jar build/libs/blackfriday-1.0-SNAPSHOT.jar'
+                        bat 'docker build -t blackfriday'
+                        bat 'docker run -it blackfriday'
                  }           
         }
     
