@@ -9,25 +9,20 @@ pipeline {
         }
         stage('Build') {
             steps {
-
                         bat 'gradle build'
-                
             }
         }
         stage('Test') {
             steps {
-                
                         bat 'gradle RunTest'
-                  
             }
         }
         stage('Deploy') {
-            steps {                
+            steps {
                         bat 'docker build -t blackfriday .'
                         bat 'docker run -it blackfriday'
-                 }           
+                 }
         }
-    
 }
 
 post {
