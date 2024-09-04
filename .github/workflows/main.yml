@@ -3,6 +3,7 @@ name: CI Workflow
 on:
   push:
     branches:
+      - build
       - development
 
 jobs:
