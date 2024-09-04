@@ -17,8 +17,6 @@ RUN gradle build --no-daemon
 
 #Step 6: Run to build Jar 
 RUN gradle BuildJar --no-daemon
-RUN gradle copyResources --no-daemon
-RUN gradle createZip --no-daemon
 
 # Step 7: Use a smaller base image for the final application
 FROM openjdk:22-jdk
