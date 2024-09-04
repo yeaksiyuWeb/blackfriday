@@ -11,21 +11,37 @@ public class Application {
         Company company = new Company();
         Scanner scanner = new Scanner(System.in);
 
+        // Print application header
+        printHeader();
+
         // Get user input for stocking products
-        System.out.println("Enter the number of products you want to stock:");
-        int numProducts = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        System.out.println("Enter the number of products you want to stock (or 'e' to exit):");
+        String numProductsInput = scanner.nextLine();
+        if (numProductsInput.equalsIgnoreCase("e")) {
+            System.exit(0);
+        }
+        int numProducts = Integer.parseInt(numProductsInput);
 
         for (int i = 0; i < numProducts; i++) {
             System.out.println("Enter product ID:");
             String id = scanner.nextLine();
+            if (id.equalsIgnoreCase("e")) {
+                System.exit(0);
+            }
             
             System.out.println("Enter quantity:");
-            int quantity = scanner.nextInt();
+            String quantityInput = scanner.nextLine();
+            if (quantityInput.equalsIgnoreCase("e")) {
+                System.exit(0);
+            }
+            int quantity = Integer.parseInt(quantityInput);
             
             System.out.println("Enter price per unit:");
-            int price = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            String priceInput = scanner.nextLine();
+            if (priceInput.equalsIgnoreCase("e")) {
+                System.exit(0);
+            }
+            int price = Integer.parseInt(priceInput);
 
             // Stock the product
             company.stock(quantity, id, price);
@@ -34,6 +50,9 @@ public class Application {
         // Sell some products
         System.out.println("Enter the product ID to sell:");
         String sellId = scanner.nextLine();
+        if (sellId.equalsIgnoreCase("e")) {
+            System.exit(0);
+        }
         float sellPrice = company.sells(sellId);
         System.out.println("Sold '" + sellId + "' for: " + sellPrice);
 
