@@ -52,4 +52,10 @@ public class Application {
         float benefit = company.computeBenefit();
         System.out.println("Computed benefit: " + benefit);
     }
+
+    public static void printHeader(){
+        System.out.print("========================================================")
+        System.out.print("        WELCOME TO BLACKFRIDAY SALES APPLICATION        ")
+        System.out.print("========================================================")
+    }
 }
