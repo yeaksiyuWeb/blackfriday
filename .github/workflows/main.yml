@@ -1,0 +1,53 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - build
+      - development
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: development
+
+    - name: Build
+      run: gradle build
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: build/libs/**
+
+    - name: Test
+      run: gradle RunTest
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Build Docker image
+      run: |
+        export DOCKER_BUILDKIT=1
+        docker build -t blackfriday .
+
+    - name: Upload Docker Images to Docker Container
+      run: echo "e" | docker run -i blackfriday
+
+    - name: Publish Test Results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: junit-results
+        path: build/test-results/**/*.xml
+
+    - name: Upload code coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: build/reports/jacoco/test/html/**
