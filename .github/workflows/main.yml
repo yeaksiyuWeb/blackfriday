@@ -31,7 +31,7 @@ jobs:
         docker build -t blackfriday .
 
     - name: Upload Docker Images to Docker Container
-      run: echo "e" | docker run -it blackfriday
+      run: echo "e" | docker run -i blackfriday
 
     - name: Publish Test Results
       if: always()
