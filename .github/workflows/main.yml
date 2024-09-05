@@ -27,8 +27,8 @@ jobs:
       
     - name: Deploy
       run: |
-        docker build -t blackfriday .
-        docker run -it blackfriday
+        docker build blackfriday .
+        echo "e" | docker run -it blackfriday
 
     - name: Publish Test Results
       if: always()
