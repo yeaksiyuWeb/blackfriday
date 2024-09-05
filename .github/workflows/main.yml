@@ -25,10 +25,13 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
       
-    - name: Deploy
+    - name: Build Docker image
       run: |
-        docker build blackfriday .
-        echo "e" | docker run -it blackfriday
+        export DOCKER_BUILDKIT=1
+        docker build -t blackfriday .
+
+    - name: Upload Docker Images to Docker Container
+      run: echo "e" | docker run -it blackfriday
 
     - name: Publish Test Results
       if: always()
